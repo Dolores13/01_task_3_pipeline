@@ -11,23 +11,22 @@ import java.nio.charset.StandardCharsets;
 
 public class SimpleCalculate {
 
-    // Tus métodos de cálculo pueden quedarse aquí si los usas en tests
     public double add(double a, double b) { return a + b; }
     public double subtract(double a, double b) { return a - b; }
     public double multiply(double a, double b) { return a * b; }
     public double divide(double a, double b) { return a / b; }
 
     public static void main(String[] args) throws IOException {
-        // Start a tiny HTTP server on port 8080
-        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+        // Cambiamos a 8081 para no pelear con Jenkins
+        int port = 8081;
+        HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         server.createContext("/", new CalculatorPageHandler());
         server.setExecutor(null);
 
-        System.out.println("Server running on http://0.0.0.0:8080");
+        System.out.println("Server running on http://0.0.0.0:" + port);
         server.start();
     }
-//changed
-    // This handler returns a simple HTML calculator
+
     static class CalculatorPageHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
@@ -62,7 +61,7 @@ public class SimpleCalculate {
                           else if (op === '-') r = a - b;
                           else if (op === '*') r = a * b;
                           else if (op === '/') {
-                            if (b === 0) { 
+                            if (b === 0) {
                               document.getElementById('result').innerHTML = 'Cannot divide by zero.';
                               return;
                             }
@@ -85,3 +84,4 @@ public class SimpleCalculate {
         }
     }
 }
+
