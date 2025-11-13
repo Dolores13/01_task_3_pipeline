@@ -26,7 +26,7 @@ public class SimpleCalculate {
         System.out.println("Server running on http://0.0.0.0:8080");
         server.start();
     }
-
+//changed
     // This handler returns a simple HTML calculator
     static class CalculatorPageHandler implements HttpHandler {
         @Override
