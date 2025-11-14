@@ -23,7 +23,7 @@ public class SimpleCalculate {
         server.createContext("/", new CalculatorPageHandler());
         server.setExecutor(null);
 
-        System.out.println("Server running on http://0.0.0.0:" + port);
+        System.out.println("Server running on http://localhost:" + port);
         server.start();
     }
 
@@ -67,7 +67,7 @@ public class SimpleCalculate {
                             }
                             r = a / b;
                           }
-                          document.getElementById('result').innerHTML =
+                          dtfocument.getElementById('result').innerHTML =
                             a + ' ' + op + ' ' + b + ' = <b>' + r + '</b>';
                         }
                       </script>

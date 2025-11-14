@@ -1,3 +1,12 @@
+terraform {                              # terraform version and provider settings
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
+}
+
 provider "aws" {                          # AWS provider configuration
   region     = "us-east-1"
   access_key = var.access_key
@@ -12,12 +21,12 @@ resource "aws_instance" "calculate" {       # EC2 instance for calculator + Ngin
   ami           = "ami-011899242bb902164" # EC2 Ubuntu 20.04 LTS // us-east-1
   instance_type = "t3.micro"
   subnet_id     = module.vpc.public_subnets[0]
+  key_name = "task3pipeline-key"
 
-  # Use our custom security group with ports 80 open
   vpc_security_group_ids      = [aws_security_group.calc_sg.id]
   associate_public_ip_address = true
 
-  # Startup script
+ 
   user_data = file("${path.module}/user_data.sh")
 
   tags = {
@@ -28,19 +37,27 @@ resource "aws_instance" "calculate" {       # EC2 instance for calculator + Ngin
 
 resource "aws_security_group" "calc_sg" {
   name        = "calc_sg-sg"
-  description = "Security group allowing SSH and HTTP access"
+  description = "Security group allowing HTTP access"
   vpc_id      = module.vpc.vpc_id
 
- ingress {
-  from_port   = 8080
-  to_port     = 8080
-  protocol    = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
-}
+ 
+    ingress {
+    from_port   = 9090
+    to_port     = 9090
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   ingress {
     from_port   = 80
     to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -51,7 +68,6 @@ resource "aws_security_group" "calc_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
   tags = {
     extraTag = local.extra_tag
     Name     = "calc-sg"
