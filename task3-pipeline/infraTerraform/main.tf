@@ -26,8 +26,45 @@ resource "aws_instance" "calculate" {       # EC2 instance for calculator + Ngin
   vpc_security_group_ids      = [aws_security_group.calc_sg.id]
   associate_public_ip_address = true
 
- 
-  user_data = file("${path.module}/user_data.sh")
+  user_data = <<-EOF
+#!/bin/bash
+set -eux
+
+apt-get update -y
+apt-get install -y docker.io git nginx
+
+systemctl enable docker
+systemctl start docker
+systemctl enable nginx
+systemctl start nginx
+
+cd /opt
+rm -rf 01_task_3_pipeline
+git clone https://github.com/Dolores13/01_task_3_pipeline.git
+
+cd 01_task_3_pipeline/task3-pipeline
+docker build -t calculator-app:latest .
+
+docker stop calculator-container || true
+docker rm calculator-container || true
+docker run -d --restart unless-stopped --name calculator-container -p 9090:9090 calculator-app:latest
+
+cat > /etc/nginx/sites-available/default << 'EONGX'
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    location / {
+        proxy_pass http://127.0.0.1:9090;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+EONGX
+
+systemctl restart nginx
+EOF
+  
 
   tags = {
     extraTag = local.extra_tag
