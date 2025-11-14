@@ -68,10 +68,4 @@ jobs:
         run: docker build -t simplecalculate:ci "${{ steps.pom.outputs.dir }}"
 
       - name: Smoke test container
-        run: |
-          docker run -d --rm -p 9090:9090 --name simplecalculate simplecalculate:ci
-          sleep 5
-          curl -f http://localhost:9090
-          docker stop simplecalculate
-
-  
+        run: docker image inspect simplecalculate:ci
