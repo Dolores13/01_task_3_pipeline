@@ -67,7 +67,7 @@ public class SimpleCalculate {
                             }
                             r = a / b;
                           }
-                          dtfocument.getElementById('result').innerHTML =
+                          document.getElementById('result').innerHTML =
                             a + ' ' + op + ' ' + b + ' = <b>' + r + '</b>';
                         }
                       </script>
