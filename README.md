@@ -71,8 +71,6 @@ This project helped me understand the main stages of a DevOps pipeline:
 - running everything in AWS  
 - adding basic monitoring  
 
-Even though the application is simple, the pipeline covers a complete DevOps workflow.
-
 ## MADE BY:
 
 Maria Dolores Martos Cabrera  
