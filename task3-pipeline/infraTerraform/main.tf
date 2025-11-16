@@ -112,7 +112,7 @@ resource "aws_security_group" "calc_sg" {
     Name     = "calc-sg"
   }
 }
-# CloudWatch alarm to monitor high CPU usage on the calculator EC2 instance
+# CloudWatch alarm to monitor high CPU 
 resource "aws_cloudwatch_metric_alarm" "cpu_high_calculate" {
   alarm_name          = "calculator-ec2-high-cpu"
   alarm_description   = "Alarm when EC2 CPU usage is too high"
