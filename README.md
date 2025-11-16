@@ -2,7 +2,7 @@
 This repsiitory contains my work for the Task 3, the objective of which was to create a simple web and building a small DevOps pipeline around it.
 Everything was done step by step and focused on learning the fundamentals of the DevOps phases, which were: code, CI (Build + test), security, container, IaC, Deploy and Monitoring
 
-## 1 PHASE SOURCE CODE MANAGEMENT: CREATE WEB WITH JAVE > MAVEN > GIT > GITHUB.
+## 1 PHASE SOURCE CODE MANAGEMENT: CREATE WEB WITH JAVA > MAVEN > GIT > GITHUB.
 I created a simple Java calculator introducing a function to be able to use HTML and Javascript helped me create the frontend. 
 The application is a simple calculator where you tell it the numbers you want to calculate and the operation you want to perform, and it automatically returns the result, displaying the operation.
 I used Maven commands like the JUnit test:
