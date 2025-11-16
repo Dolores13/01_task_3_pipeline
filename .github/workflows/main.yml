@@ -49,7 +49,9 @@ jobs:
           args: >-
             --file=${{ steps.pom.outputs.pom }}
             --severity-threshold=medium
+            --sarif
             --sarif-file-output=snyk.sarif
+
 
       - name: Debug
         run: |
