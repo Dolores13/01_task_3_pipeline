@@ -7,7 +7,9 @@ I created a simple Java calculator introducing a function to be able to use HTML
 The application is a simple calculator where you tell it the numbers you want to calculate and the operation you want to perform, and it automatically returns the result, displaying the operation.
 I used Maven commands like the JUnit test:
   -mvn clean test
+  
   -mv package
+  
   -java -cp target/classes com.example.devops.SimpleCalculate
 
 I used Git for version control:
@@ -19,8 +21,11 @@ Also, I added a GitHub all my project with "git push"
 ## 2 PHASE AUTOMATED BUILDS AND TESTING: GITHUB ACTIONS
 I added a GitHub Actions workflow so that every time I push code:
 -the project is built with Maven
+
 -the tests run
+
 -Snyk scans the dependencies
+
 -Dockers building the imagin 
 
 ## 3 PHASE SECURITY SCANNING 
@@ -30,4 +35,6 @@ Ther results appear in GitHub under: Security > Code Scanning Alerts
 ## 4 PHASE CONTAINERISATION: DOCKER
 I wrote a Dockerfile so the calculator can run inside a container, this was useful to learn how to package an application.
 I used the commands: 
-  - docker build -t calculator-app docker run -p 9090:9090 cualculator-app
+  - docker build -t calculator-app
+
+  - docker run -p 9090:9090 cualculator-app
