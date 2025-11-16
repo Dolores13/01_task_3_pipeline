@@ -11,9 +11,9 @@ I used Maven commands like the JUnit test:
   -java -cp target/classes com.example.devops.SimpleCalculate
 
 I used Git for version control:
-  -Git add .
-  -Git commit -m "menssage"
-  -Git push
+  -git add .
+  -git commit -m "menssage"
+  -git push
 Also, I added a GitHub all my project with "git push" 
 
 # 2 PHASE AUTOMATED BUILDS AND TESTING: GITHUB ACTIONS
@@ -26,3 +26,8 @@ I added a GitHub Actions workflow so that every time I push code:
 # 3 PHASE SECURITY SCANNING 
 Snyck checks for security issues in the Maven dependencies. I only had to create a token in Snyk and save it as a GitHub secret.
 Ther results appear in GitHub under: Security > Code Scanning Alerts
+
+# 4 PHASE CONTAINERISATION: DOCKER
+I wrote a Dockerfile so the calculator can run inside a container, this was useful to learn how to package an application.
+I used the commands: 
+  - docker build -t calculator-app docker run -p 9090:9090 cualculator-app
