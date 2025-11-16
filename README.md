@@ -14,7 +14,7 @@ I used Maven commands like the JUnit test:
 I used Git for version control:
   
   - git add .
-  - git commit -m "menssage"
+  - git commit -m "message"
   - git push
   
 Also, I added a GitHub all my project with "git push" 
