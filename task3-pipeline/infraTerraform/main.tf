@@ -17,8 +17,8 @@ locals {
   extra_tag = "extra-tag"
 }
 
-resource "aws_instance" "calculate" {       # EC2 instance for calculator + Nginx
-  ami           = "ami-011899242bb902164"   # EC2 Ubuntu 20.04 LTS // us-east-1
+resource "aws_instance" "calculate" {      
+  ami           = "ami-011899242bb902164"   
   instance_type = "t3.micro"
   subnet_id     = module.vpc.public_subnets[0]
   key_name = "task3pipeline-key"

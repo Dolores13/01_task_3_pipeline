@@ -27,7 +27,7 @@ public class SimpleCalculateTest {
     }
 
     @Test
-void testDivisionByZero() {
+    void testDivisionByZero() {
     double a = 10.0;
     double b = 0.0;
     double result = a / b;

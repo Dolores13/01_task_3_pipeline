@@ -18,15 +18,3 @@ module "vpc"{
 
 }
 
-module "terraform-sg" {
-    source = "terraform-aws-modules/security-group/aws"
-
-    name = "https rule"
-    description = "Sg to Lola"
-    vpc_id = module.vpc.vpc_id
-    ingress_cidr_blocks = ["0.0.0.0/0"]
-    ingress_rules = ["https-443-tcp"]
-    egress_cidr_blocks = ["0.0.0.0/0"]
-    egress_rules = ["https-443-tcp"]
-
-}
