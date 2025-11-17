@@ -27,7 +27,7 @@ I added a GitHub Actions workflow so that every time I push code:
 - Snyk scans the dependencies
 - Dockers building the imagin 
 
-## 3 PHASE SECURITY SCANNING: SNYCK
+## 3 PHASE SECURITY SCANNING: SNYK
 Snyck checks for security issues in the Maven dependencies. I only had to create a token in Snyk and save it as a GitHub secret.
 Ther results appear in GitHub under: Security > Code Scanning Alerts
 
