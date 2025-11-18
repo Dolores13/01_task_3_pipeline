@@ -22,7 +22,7 @@ Also, I added a GitHub all my project with "git push"
 ## 2 PHASE AUTOMATED BUILDS AND TESTING: GITHUB ACTIONS
 I added a GitHub Actions workflow so that every time I push code:
 
-- the project is built with Maven > the tests run > Snyk scans the dependencies > Dockers building the imagin 
+the project is built with Maven > the tests run > Snyk scans the dependencies > Dockers building the imagin 
 
 ## 3 PHASE SECURITY SCANNING: SNYK
 Snyck checks for security issues in the Maven dependencies. I only had to create a token in Snyk and save it as a GitHub secret.
